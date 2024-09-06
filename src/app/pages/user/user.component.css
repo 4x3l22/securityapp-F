@@ -1,0 +1,13 @@
+.margin{
+  margin-top: 80px;
+}
+.registro-modulo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+.elementos{
+  display: flex;
+  justify-content: space-evenly;
+}

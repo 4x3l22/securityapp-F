@@ -1,0 +1,31 @@
+<div class="container cp">
+  <form [formGroup]="viewform" (ngSubmit)="postView()">
+    <div class="row">
+      <div class="col-12 mb">
+        <label class="form-label" for="name">Nombre vista</label>
+        <input class="form-control" type="text" id="name" formControlName="Name">
+      </div>
+      <div class="col-12 mb">
+        <label class="form-label" for="route">Ruta vista</label>
+        <input class="form-control" type="text" id="route" formControlName="Route">
+      </div>
+      <div class="col-12 mb">
+        <label class="form-label" for="module">Módulo</label>
+        <select id="module" formControlName="ModuleId" class="form-control">
+          @for (item of modules; track item) {
+            <option [value]="item.id">{{ item.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="description">Descripción</label>
+        <textarea class="form-control" id="description" formControlName="Description"></textarea>
+      </div>
+      <input type="hidden" formControlName="CreateAt">
+    </div>
+    <div class="botones">
+      <button (click)="navigation('view')" class="btn btn-secondary" type="button">Regresar</button>
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+  </form>
+</div>

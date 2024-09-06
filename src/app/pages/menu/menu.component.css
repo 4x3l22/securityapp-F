@@ -1,0 +1,23 @@
+.naver{
+    justify-content: flex-end;
+}
+.img-user{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.img-user>img{
+    width: 70%;
+
+}
+
+.color{
+    background-color: #FF3D00;
+}

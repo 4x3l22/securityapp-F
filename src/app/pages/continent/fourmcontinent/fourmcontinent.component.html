@@ -1,0 +1,19 @@
+<div class="container cp">
+  <form [formGroup]="continentf" action="">
+    <div class="row">
+      <div class="col-12 mb">
+        <label class="form-label" for="name">Nombre Contiente</label>
+        <input class="form-control" type="text" name="name" id="name" formControlName="Name">
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="description">Descripción</label>
+        <textarea class="form-control" name="description" id="description"  formControlName="Description"></textarea>
+      </div>
+      <input type="hidden" formControlName="CreateAt" name="" id="">
+    </div>
+  </form>
+  <div class="botones">
+    <button (click)="navigation('continent')" class="btn btn-secondary">Regresar</button>
+    <button type="submit" (click)="post()" class="btn btn-success">Guardar</button>
+  </div>
+</div>

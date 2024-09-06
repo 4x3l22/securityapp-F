@@ -1,0 +1,17 @@
+.botones{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+.cp{
+  margin-top: 160px;
+  padding: 51px;
+  width: 50%;
+  background-color: #FF3D00;
+  border-radius: 15px;
+}
+.mb{
+  margin-bottom: 20px;
+}
