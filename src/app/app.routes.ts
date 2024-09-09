@@ -10,63 +10,37 @@ import { FormuserComponent } from './pages/user/formuser/formuser.component';
 import { UserComponent } from './pages/user/user.component';
 import { PersonComponent } from './pages/person/person.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth.guard';
 import { MainComponent } from './pages/main/main.component';
 import { ContinentComponent } from './pages/continent/continent.component';
 import { FourmcontinentComponent } from './pages/continent/fourmcontinent/fourmcontinent.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-
   { path: 'login', component: LoginComponent },
-  { path: '',
-    component: MainComponent,
-    canActivate: [AuthGuard],
-    children: [
 
-      { path: 'module',
-        component:  ModuleComponent
-      },
-      { path: 'home',
-        component: HomeComponent
-      },
-      { path: 'formmodule',
-        component:  FormmoduleComponent
-      },
-      { path: 'view',
-        component: ViewComponent
-      },
-      { path: 'formview',
-        component: FormviewComponent
-      },
-      { path: 'rol',
-        component: RoleComponent
-      },
-      { path: 'formrol',
-        component: FormrolComponent
-      },
-      { path: 'user',
-        component: UserComponent
-      },
-      { path: 'userform',
-        component: FormuserComponent
-      },
-      { path: 'person',
-        component: PersonComponent
-      },
-      { path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'continent',
-        component:  ContinentComponent
-      },
-      {
-        path: 'fcontinent',
-        component: FourmcontinentComponent
-      }
+  // Redirección por defecto a 'main'
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+
+  {
+    path: 'main',
+    component: MainComponent,
+    canActivate: [authGuard], // Ruta protegida
+    children: [
+      { path: 'module', component: ModuleComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'formmodule', component: FormmoduleComponent },
+      { path: 'view', component: ViewComponent },
+      { path: 'formview', component: FormviewComponent },
+      { path: 'rol', component: RoleComponent },
+      { path: 'formrol', component: FormrolComponent },
+      { path: 'user', component: UserComponent },
+      { path: 'userform', component: FormuserComponent },
+      { path: 'person', component: PersonComponent },
+      { path: 'continent', component: ContinentComponent },
+      { path: 'fcontinent', component: FourmcontinentComponent }
     ]
   },
 
-  { path: '**', redirectTo: '/login'},
-
+  // Ruta para manejar rutas no encontradas
+  { path: '**', redirectTo: '/login' }
 ];

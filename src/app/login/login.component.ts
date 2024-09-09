@@ -1,29 +1,37 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../_service/login.service';
+import { Router } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-  username: string = "";
-  password: string = "";
-  loginError: string = "";
+  username: string = '';
+  password: string = '';
+  loginError: string = '';
 
-  constructor(private authService: LoginService){}
+  constructor(private authService: LoginService, private router:  Router) { }
+
 
   login(): void{
     this.authService.login(this.username,this.password).subscribe(
-      data =>{
-        console.log('Login exitoso '+data);
-      },
-      error =>{
-        this.loginError = 'Verifique sus credenciales';
+      (response) => {
+        if(response){
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(["main"]);
+        }else{
+          this.loginError = 'Credenciales erroneas';
+        }
       }
-    );
+    ),
+      (error: any) => {
+      this.loginError = 'Error del  servidor';
+    }
   }
 }
