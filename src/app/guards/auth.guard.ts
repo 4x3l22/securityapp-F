@@ -9,15 +9,19 @@ export const authGuard: CanActivateFn = (route, state) => {
   const isLoggedIn = service.isLoggedIn();
   console.log('Usuario autenticado:', isLoggedIn);
 
-  do {
-
-    if (isLoggedIn) {
-      return true;
-    } else {
+  setInterval(()=>{
+    var  token = localStorage.getItem('user');
+    if(token == null){
       router.navigate(['/login']);
-      return false;
     }
 
-  } while (!isLoggedIn);
+  },100)
 
+  if (isLoggedIn) {
+    return true;
+  } else {
+    console.log('Redirigiendo a login...');
+    router.navigate(['/login']);
+    return false;
+  }
 };

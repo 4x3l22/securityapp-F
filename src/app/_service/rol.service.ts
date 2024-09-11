@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IRol } from './interfaces/Irole';
+import {View} from "./interfaces/view";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class RolService {
       return this.http.put<any>(`${this.url}${ruta}`, data, { headers });
     }
     return this.http.post<any>(`${this.url}${ruta}`, data, { headers });
+  }
+
+  getId(ruta: string, id: number[]): Observable<IRol[]>{
+    const idsQuery = id.join(',');
+    return this.http.get<IRol[]>(`${this.url}${ruta}/${idsQuery}`)
   }
 
   Delete(ruta: string, id:number){

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { View } from './interfaces/view';
 
 @Injectable({
@@ -22,6 +22,13 @@ export class ViewService {
       return this.http.put<any>(`${this.url}${ruta}`, data, { headers });
     }
     return this.http.post<any>(`${this.url}${ruta}`, data, { headers });
+  }
+
+  getId(ruta: string, id: number[]): Observable<View[]>{
+    const idsQuery = id.join(',');
+    return this.http.get<View[]>(`${this.url}${ruta}/${idsQuery}`).pipe(
+      map(response => response || [])
+    )
   }
 
   Delete(ruta: string, id:number){

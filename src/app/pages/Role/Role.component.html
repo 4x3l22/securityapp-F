@@ -1,6 +1,6 @@
 <div class="container">
   <div class="registro-modulo">
-      <button (click)="navegation('formrol')" class="btn btn-success" data-bs-toggle="modal">Registrar Rol <img src="plus-circle-fill.svg" alt=""></button>
+      <button (click)="navegation('main/formrol',0)" class="btn btn-success" data-bs-toggle="modal">Registrar Rol <img src="plus-circle-fill.svg" alt=""></button>
   </div>
 </div>
 <div class="container margin">
@@ -28,7 +28,7 @@
                   <td class="elementos">
                       <button class="btn btn-warning" type="button"><img src="pencil-square.svg" alt=""></button>
                       <button (click)="deleterol(item.id)" class="btn btn-danger"  type="button"><i class="bi bi-trash3"></i></button>
-
+                      <button (click)="navegation('main/roleview/',item.id)" class="btn btn-light" type="button"><i class="bi bi-braces"></i></button>
                   </td>
               </tr>
           }

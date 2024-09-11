@@ -8,28 +8,27 @@
       </button>
       <div class="collapse navbar-collapse naver" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          <!-- Enlace de inicio -->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" (click)="navegation('home')">Home</a>
+            <a class="nav-link active" aria-current="page" (click)="navegation('main/home')">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              security
+
+          <!-- Crear dropdowns para cada módulo -->
+          <li *ngFor="let module of modules" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ module.moduleName }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" (click)="navegation('module')">module</a></li>
-              <li><a class="dropdown-item" (click)="navegation('view')">View</a></li>
-              <li><a class="dropdown-item" (click)="navegation('rol')">rol</a></li>
-              <li><a class="dropdown-item" (click)="navegation('user')">user</a></li>
-              <li><a class="dropdown-item" (click)="navegation('person')">Person</a></li>
+              <li *ngFor="let view of module.views">
+                <a class="dropdown-item" (click)="navegation(view.route)">{{ view.viewName }}</a>
+              </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Parameter
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" (click)="navegation('continent')">continent</a></li>
-            </ul>
+
+          <!-- Enlace de cierre de sesión -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" (click)="logOut()">Logout</a>
+          </li>
         </ul>
       </div>
     </div>

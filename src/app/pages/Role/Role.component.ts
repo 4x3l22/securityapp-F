@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { IRol } from '../../_service/interfaces/Irole';
 import { RolService } from '../../_service/rol.service';
+import { DataRolService } from '../../_service/data-rol.service';
 
 @Component({
   selector: 'app-Role',
@@ -27,7 +28,8 @@ export class RoleComponent implements OnInit {
   constructor
   (
     private router: Router,
-    private service: RolService
+    private service: RolService,
+    private datarole: DataRolService
   )
   {
 
@@ -42,8 +44,13 @@ export class RoleComponent implements OnInit {
 
   }
 
-  navegation(rout: string) {
-    this.router.navigate([rout]);
+  navegation(rout: string, id: number) {
+    if(id != 0){
+      this.datarole.setData('id',id);
+      this.router.navigate([rout]);
+    }else{
+      this.router.navigate([rout]);
+    }
   }
 
   getRols(){
@@ -89,5 +96,6 @@ export class RoleComponent implements OnInit {
       });
     })
   }
+
 
 }

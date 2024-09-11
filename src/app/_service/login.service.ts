@@ -20,7 +20,7 @@ export class LoginService {
     .pipe(
       tap(response=>{
         if(response && response.success){
-          localStorage.setItem('user',  JSON.stringify(response.user));
+          localStorage.setItem('user',  JSON.stringify(response, null, 2));
         }
       })
     )
@@ -32,7 +32,8 @@ export class LoginService {
   }
 
   isLoggedIn(): boolean{
-    const userData = localStorage.getItem(this.userKey);
+    const userData = localStorage.getItem('user');
+    // console.log('User data in localStorage:', userData);
     return userData !== null;
   }
 

@@ -5,7 +5,9 @@
         <div class="card-body">
           <h2>Iniciar sesión</h2>
           <form (ngSubmit)="login()">
-            <div ngIf="loginError" class="error">{{ loginError }}</div>
+            @if (loginError) {
+              <div class="error">{{ loginError }}</div>
+            }
             <div class="form-group">
               <label for="usuario">Usuario:</label>
               <input type="text" [(ngModel)]="username" id="usuario" name="usuario" class="form-control">

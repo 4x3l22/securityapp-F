@@ -19,19 +19,18 @@ export class LoginComponent {
   constructor(private authService: LoginService, private router:  Router) { }
 
 
-  login(): void{
-    this.authService.login(this.username,this.password).subscribe(
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        if(response){
-          localStorage.setItem('user', JSON.stringify(response));
-          this.router.navigate(["main"]);
-        }else{
-          this.loginError = 'Credenciales erroneas';
+        if (response.success) {
+          this.router.navigate(['main']);
+        } else {
+          this.loginError = 'Credenciales erróneas';
         }
-      }
-    ),
+      },
       (error: any) => {
-      this.loginError = 'Error del  servidor';
-    }
+        this.loginError = 'Error del servidor';
+      }
+    );
   }
 }

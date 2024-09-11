@@ -14,33 +14,30 @@ import { MainComponent } from './pages/main/main.component';
 import { ContinentComponent } from './pages/continent/continent.component';
 import { FourmcontinentComponent } from './pages/continent/fourmcontinent/fourmcontinent.component';
 import { authGuard } from './guards/auth.guard';
+import {RolviewComponent} from "./pages/rolview/rolview.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-
-  // Redirección por defecto a 'main'
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
-
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'main',
     component: MainComponent,
-    canActivate: [authGuard], // Ruta protegida
+    canActivate: [authGuard],
     children: [
       { path: 'module', component: ModuleComponent },
       { path: 'home', component: HomeComponent },
       { path: 'formmodule', component: FormmoduleComponent },
       { path: 'view', component: ViewComponent },
       { path: 'formview', component: FormviewComponent },
-      { path: 'rol', component: RoleComponent },
+      { path: 'role', component: RoleComponent },
       { path: 'formrol', component: FormrolComponent },
       { path: 'user', component: UserComponent },
       { path: 'userform', component: FormuserComponent },
       { path: 'person', component: PersonComponent },
       { path: 'continent', component: ContinentComponent },
-      { path: 'fcontinent', component: FourmcontinentComponent }
+      { path: 'fcontinent', component: FourmcontinentComponent },
+      { path: 'roleview', component: RolviewComponent}
     ]
   },
-
-  // Ruta para manejar rutas no encontradas
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: 'login' }
 ];
