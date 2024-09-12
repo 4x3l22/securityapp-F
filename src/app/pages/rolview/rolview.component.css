@@ -1,0 +1,22 @@
+.margin{
+  margin-top: 80px;
+}
+.registro-modulo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.elementos{
+  display: flex;
+  justify-content: space-evenly;
+}
+.titulo{
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+  align-items: center;
+}
+.titulo>b>i{
+  font-family: 25px;
+}

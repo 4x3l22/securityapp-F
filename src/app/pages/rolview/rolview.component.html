@@ -1,3 +1,33 @@
-<p>
-  hola
-</p>
+<div class="container">
+  <div class="registro-modulo">
+    <div class="titulo">
+      <b><i (click)="navigate('main/role')" class="bi bi-arrow-left"></i></b>
+      <h3>Rol de usuario: {{name}}</h3>
+    </div>
+      <button (click)="navegation('main/formrol',id)" class="btn btn-success" data-bs-toggle="modal">Registrar Rol <img src="plus-circle-fill.svg" alt=""></button>
+  </div>
+</div>
+<div class="container margin">
+  <table datatable [dtOptions]="dtoptions" [dtTrigger]="dttrigger" class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Nombre de las vistas asignadas</th>
+            <th>Funciones</th>
+        </tr>
+      </thead>
+      <tbody>
+          @for(item of roleViews;track item){
+              <tr>
+                  <td>{{item.viewId}}</td>
+                  <td>{{item.name}}</td>
+                  <td class="elementos">
+                      <button class="btn btn-warning" type="button"><img src="pencil-square.svg" alt=""></button>
+                      <!-- <button (click)="deleterol(item.id)" class="btn btn-danger"  type="button"><i class="bi bi-trash3"></i></button> -->
+
+                  </td>
+              </tr>
+          }
+      </tbody>
+  </table>
+</div>

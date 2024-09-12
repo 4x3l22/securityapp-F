@@ -1,0 +1,23 @@
+<div class="container cp">
+  <form [formGroup]="roleview" action="">
+    <div class="row">
+      <div class="col-12 mb">
+        <label class="form-label" for="name">Nombre Rol</label>
+        <select name="" id="" formControlName="viewId">
+          @for(item of Views;track item){
+            <option [value]="item.id">{{item.name}}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="description">Descripción</label>
+        <textarea class="form-control" name="description" id="description"  formControlName="Description"></textarea>
+      </div>
+      <input type="hidden" formControlName="CreateAt" name="" id="">
+    </div>
+  </form>
+  <div class="botones">
+    <button (click)="navigation('main/roleview')" class="btn btn-secondary">Regresar</button>
+    <button type="submit" (click)="postForm()" class="btn btn-success">Guardar</button>
+  </div>
+</div>

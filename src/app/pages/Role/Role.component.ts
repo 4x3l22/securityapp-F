@@ -1,4 +1,3 @@
-import { resolve } from 'node:path';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
@@ -18,54 +17,52 @@ import { DataRolService } from '../../_service/data-rol.service';
 })
 export class RoleComponent implements OnInit {
 
-
   id?: number;
+  roles: IRol[] = [];
+  dtoptions: Config = {};
+  dttrigger: Subject<any> = new Subject<any>();
 
-  roles: IRol[]=[];
-  dtoptions: Config={}
-  dttrigger: Subject<any> = new  Subject<any>();
-
-  constructor
-  (
+  constructor(
     private router: Router,
     private service: RolService,
     private datarole: DataRolService
-  )
-  {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.getRols();
-    this.dtoptions={
+    this.dtoptions = {
       pagingType: "full_numbers",
-      lengthMenu: [5,10,15,20]
+      lengthMenu: [5, 10, 15, 20]
     };
-
   }
 
-  navegation(rout: string, id: number) {
-    if(id != 0){
-      this.datarole.setData('id',id);
+  navigate(rout: string){
+    this.router.navigate([rout]);
+  }
+
+  navegation(rout: string, id: number, name: string) {
+    if (id !== undefined && id !== null) {
+      // alert('el id es: ' + id);
+      this.datarole.setData('id', id);
+      this.datarole.setData('name', name);
       this.router.navigate([rout]);
-    }else{
-      this.router.navigate([rout]);
+    } else {
+      console.error('ID is undefined or null');
     }
   }
 
-  getRols(){
+  getRols() {
     return this.service.GetRol("role").subscribe({
       next: (data: IRol[]) => {
         console.log(data);
-        this.roles=data;
+        this.roles = data;
         this.dttrigger.next(null);
       }
-    })
-
+    });
   }
 
   validator(): Promise<void> {
-    return new  Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -80,13 +77,12 @@ export class RoleComponent implements OnInit {
         }
       });
     });
-
   }
 
-  deleterol(id: any){
-    this.validator().then(()=>{
-      this.service.Delete("Role",  id).subscribe((data: any)=>{
-        if(data.status){
+  deleterol(id: any) {
+    this.validator().then(() => {
+      this.service.Delete("Role", id).subscribe((data: any) => {
+        if (data.status) {
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -94,8 +90,6 @@ export class RoleComponent implements OnInit {
           });
         }
       });
-    })
+    });
   }
-
-
 }
