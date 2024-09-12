@@ -2,16 +2,12 @@
   <form [formGroup]="roleview" action="">
     <div class="row">
       <div class="col-12 mb">
-        <label class="form-label" for="name">Nombre Rol</label>
-        <select name="" id="" formControlName="viewId">
+        <label class="form-label" for="name">Nombre vista</label>
+        <select class="form-select" name="" id="" formControlName="viewId">
           @for(item of Views;track item){
             <option [value]="item.id">{{item.name}}</option>
           }
         </select>
-      </div>
-      <div class="col-12">
-        <label class="form-label" for="description">Descripción</label>
-        <textarea class="form-control" name="description" id="description"  formControlName="Description"></textarea>
       </div>
       <input type="hidden" formControlName="CreateAt" name="" id="">
     </div>

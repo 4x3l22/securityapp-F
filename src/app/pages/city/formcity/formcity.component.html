@@ -1,0 +1,27 @@
+<div class="container cp">
+  <form [formGroup]="cityform" action="">
+    <div class="row">
+      <div class="col-12 mb">
+        <label class="form-label" for="name">Nombre ciudad</label>
+        <input class="form-control" type="text" name="name" id="name" formControlName="Name">
+      </div>
+      <div class="col-12 mb">
+        <label class="form-label" for="module">Países</label>
+        <select id="module" formControlName="ContinentId" class="form-control">
+          @for (item of countryes; track item) {
+            <option [value]="item.id">{{ item.name }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="description">Descripción</label>
+        <textarea class="form-control" name="description" id="description"  formControlName="Description"></textarea>
+      </div>
+      <input type="hidden" formControlName="CreateAt" name="" id="">
+    </div>
+  </form>
+  <div class="botones">
+    <button (click)="navigation('main/city')" class="btn btn-secondary">Regresar</button>
+    <button type="submit" (click)="postCity()" class="btn btn-success">Guardar</button>
+  </div>
+</div>

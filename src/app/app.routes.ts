@@ -15,6 +15,11 @@ import { ContinentComponent } from './pages/continent/continent.component';
 import { FourmcontinentComponent } from './pages/continent/fourmcontinent/fourmcontinent.component';
 import { authGuard } from './guards/auth.guard';
 import {RolviewComponent} from "./pages/rolview/rolview.component";
+import { FormroleviewComponent } from './pages/rolview/formroleview/formroleview.component';
+import { CityComponent } from './pages/city/city.component';
+import { FormcityComponent } from './pages/city/formcity/formcity.component';
+import { CountryComponent } from './pages/country/country.component';
+import { FormcountryComponent } from './pages/country/formcountry/formcountry.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,7 +41,13 @@ export const routes: Routes = [
       { path: 'person', component: PersonComponent },
       { path: 'continent', component: ContinentComponent },
       { path: 'fcontinent', component: FourmcontinentComponent },
-      { path: 'roleview', component: RolviewComponent}
+      { path: 'roleview', component: RolviewComponent},
+      { path: 'formroleview', component: FormroleviewComponent},
+      { path: 'city', component:  CityComponent },
+      { path: 'formcity', component: FormcityComponent},
+      { path: 'country', component: CountryComponent},
+      { path: 'formcountry', component: FormcountryComponent}
+
     ]
   },
   { path: '**', redirectTo: 'login' }

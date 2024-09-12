@@ -61,8 +61,8 @@ export class FormroleviewComponent implements OnInit{
   postForm(){
     const data = {
       id: this.id ?? 0,
-      RoleId: this.roleview.get('roleId')?.value,
-      viewId: sessionStorage.getItem('id'),
+      RoleId: sessionStorage.getItem('id'),
+      viewId: this.roleview.get('viewId')?.value,
       state: true
     }
     this.service.post("RoleView",this.id,data).subscribe(

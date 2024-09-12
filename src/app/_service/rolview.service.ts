@@ -22,4 +22,8 @@ export class RolviewService {
     }
     return this.http.post<any>(`${this.url}${ruta}`, data, { headers });
   }
+
+  deleteroleview(id: any, ruta: string){
+    return this.http.delete(`${this.url}${ruta}/${id}`)
+  }
 }

@@ -4,7 +4,7 @@
       <b><i (click)="navigate('main/role')" class="bi bi-arrow-left"></i></b>
       <h3>Rol de usuario: {{name}}</h3>
     </div>
-      <button (click)="navegation('main/formrol',id)" class="btn btn-success" data-bs-toggle="modal">Registrar Rol <img src="plus-circle-fill.svg" alt=""></button>
+      <button (click)="navegation('main/formroleview',id)" class="btn btn-success" data-bs-toggle="modal">Registrar Rol vista <img src="plus-circle-fill.svg" alt=""></button>
   </div>
 </div>
 <div class="container margin">
@@ -22,8 +22,8 @@
                   <td>{{item.viewId}}</td>
                   <td>{{item.name}}</td>
                   <td class="elementos">
-                      <button class="btn btn-warning" type="button"><img src="pencil-square.svg" alt=""></button>
-                      <!-- <button (click)="deleterol(item.id)" class="btn btn-danger"  type="button"><i class="bi bi-trash3"></i></button> -->
+                      <!-- <button class="btn btn-warning" type="button"><img src="pencil-square.svg" alt=""></button> -->
+                      <button (click)="deleteroleview(item.viewId)" class="btn btn-danger"  type="button"><i class="bi bi-trash3"></i></button>
 
                   </td>
               </tr>
