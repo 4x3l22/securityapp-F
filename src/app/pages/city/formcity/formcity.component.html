@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 mb">
         <label class="form-label" for="module">Países</label>
-        <select id="module" formControlName="ContinentId" class="form-control">
+        <select id="module" formControlName="cityId" class="form-control">
           @for (item of countryes; track item) {
             <option [value]="item.id">{{ item.name }}</option>
           }

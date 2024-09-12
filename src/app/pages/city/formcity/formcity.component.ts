@@ -29,6 +29,7 @@ export class FormcityComponent {
     this.cityform = new FormGroup({
       Name: new FormControl(null, [Validators.required]),
       Description: new FormControl(null, [Validators.required]),
+      CountryId: new FormControl(null, [Validators.required]),
       State: new FormControl(true, [Validators.required]),
       CreateAt: new FormControl(new Date().toISOString())
     });
@@ -55,6 +56,7 @@ export class FormcityComponent {
       id: this.id ?? 0,
       Name: this.cityform.get('Name')?.value,
       Description: this.cityform.get('Description')?.value,
+      CountryId: this.cityform.get('cityId')?.value,
       State: true,
       CreateAt: new Date().toISOString()
     };
